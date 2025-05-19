@@ -1,0 +1,34 @@
+@startuml
+left to right direction
+actor Admin
+actor Pimpinan
+actor "Tim Akreditasi" as Akreditasi
+
+rectangle "Sistem Analisis Data Fakultas" {
+  
+  (Login) as UC1
+  (Kelola Data Mahasiswa) as UC2
+  (Kelola Data Dosen) as UC3
+  (Lihat Grafik IPK) as UC4
+  (Analisis Kelulusan) as UC5
+  (Status Akreditasi) as UC6
+  (Export Laporan PDF/Excel) as UC7
+  (Dashboard Tematik) as UC8
+
+  Admin --> UC1
+  Admin --> UC2
+  Admin --> UC3
+  Admin --> UC6
+  Admin --> UC7
+  Admin --> UC8
+
+  Pimpinan --> UC1
+  Pimpinan --> UC4
+  Pimpinan --> UC5
+  Pimpinan --> UC8
+
+  Akreditasi --> UC1
+  Akreditasi --> UC6
+  Akreditasi --> UC7
+}
+@enduml

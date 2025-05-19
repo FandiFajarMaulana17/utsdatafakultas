@@ -1,0 +1,27 @@
+@startuml
+actor User
+actor Penjual
+actor "Payment Gateway" as Gateway
+actor "Shipping Provider" as Ekspedisi
+
+rectangle "Marketplace System" {
+  User --> (Browse Produk)
+  User --> (Tambah ke Keranjang)
+  User --> (Checkout)
+  User --> (Lakukan Pembayaran)
+  User --> (Konfirmasi Penerimaan)
+
+  (Checkout) --> (Validasi Stok dan Harga)
+  (Lakukan Pembayaran) --> Gateway
+  Gateway --> (Verifikasi Pembayaran)
+  (Verifikasi Pembayaran) --> (Update Status Pesanan)
+
+  Penjual --> (Proses Pengemasan)
+  Penjual --> (Input Nomor Resi)
+  (Input Nomor Resi) --> Ekspedisi
+  Ekspedisi --> (Update Status Pengiriman)
+
+  (Update Status Pesanan) --> User
+  (Update Status Pesanan) --> Penjual
+}
+@enduml

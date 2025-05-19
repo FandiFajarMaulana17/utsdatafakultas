@@ -1,0 +1,187 @@
+📊 Analisis Tematik Data Fakultas (Berbasis Data)
+1. Distribusi Mahasiswa per Fakultas
+Fakultas	                            Jumlah Mahasiswa
+Fakultas Teknik	                            2.100
+Fakultas Ekonomi	                        1.800
+Fakultas Ilmu Komputer	                    2.500
+Fakultas Hukum	                            1.200
+Fakultas Kedokteran	                        1.000
+
+📌 Insight:
+
+    Fakultas Ilmu Komputer memiliki mahasiswa terbanyak (2.500).
+
+    Menunjukkan minat tinggi di bidang teknologi & IT.
+
+    Perlu pengembangan kurikulum digital, server/lab komputasi, dan peningkatan daya dukung infrastruktur.
+
+2. Rasio Dosen terhadap Mahasiswa
+
+    Ideal: 1 Dosen : 30 Mahasiswa
+
+Fakultas	         Rasio	    Ideal?	            Catatan
+Fakultas Teknik	     1 : 45	      ❌	            Terlalu banyak mahasiswa per dosen
+Fakultas Ekonomi     1 : 35       ❌	            Masih lebih tinggi dari ideal
+FakultasIlmuKomputer 1 : 60       ❌❗	       Rasio paling buruk, perlu rekrutmen dosen segera
+Fakultas Hukum	     1 : 28	     ✅	                Sudah ideal
+Fakultas Kedokteran	1 : 20	     ✅	               Ideal bahkan lebih baik dari standar
+
+📌 Insight:
+
+    Fakultas Ilmu Komputer (1:60) sangat tidak ideal.
+
+    Berisiko menyebabkan overload pengajaran, turunnya kualitas akademik.
+
+    Teknik & Ekonomi juga perlu tambahan dosen.
+
+3. IPK Rata-rata Mahasiswa
+Fakultas	                            IPK Rata-rata
+Fakultas Teknik                         	3.20
+Fakultas Ekonomi	                        3.25
+Fakultas Ilmu Komputer	                    3.10
+Fakultas Hukum	                            3.30
+Fakultas Kedokteran	                        3.50
+
+📌 Insight:
+
+    Kedokteran unggul dalam IPK (3.50) → mencerminkan standar & budaya belajar tinggi.
+
+    Ilmu Komputer paling rendah (3.10) → kemungkinan karena rasio dosen, beban kurikulum, atau fasilitas yang belum optimal.
+
+4. Tingkat Kelulusan Tepat Waktu
+Fakultas 	                            Kelulusan (%)
+Fakultas Teknik	                        60%
+Fakultas Ekonomi	                    70%
+Fakultas Ilmu Komputer                	55%
+Fakultas Hukum	                        75%
+Fakultas Kedokteran	                    80%
+
+📌 Insight:
+
+    Ilmu Komputer (55%) dan Teknik (60%) memiliki kelulusan rendah.
+
+    Kemungkinan penyebab:
+
+        Rasio dosen tidak ideal
+
+        Kurangnya pendampingan skripsi
+
+        Beban akademik dan fasilitas kurang
+
+    Kedokteran sangat baik (80%) → efisiensi sistem akademik tinggi.
+
+5. Akreditasi Fakultas
+Fakultas	                  Akreditasi
+Fakultas Teknik              	B
+Fakultas Ekonomi	            A
+Fakultas Ilmu Komputer      	B
+Fakultas Hukum	                A
+Fakultas Kedokteran	            A
+
+📌 Insight:
+
+    Teknik & Ilmu Komputer hanya akreditasi B.
+
+    Ini menunjukkan perlu peningkatan mutu akademik, meliputi:
+
+        Peningkatan SDM & rekrutmen dosen
+
+        Penelitian & publikasi ilmiah
+
+        Kurikulum berbasis industri
+
+        Fasilitas dan sarana penunjang
+
+
+        ini untuk brd nya
+        @startuml
+left to right direction
+actor Admin
+actor Pimpinan
+actor "Tim Akreditasi" as Akreditasi
+
+rectangle "Sistem Analisis Data Fakultas" {
+  
+  (Login) as UC1
+  (Kelola Data Mahasiswa) as UC2
+  (Kelola Data Dosen) as UC3
+  (Lihat Grafik IPK) as UC4
+  (Analisis Kelulusan) as UC5
+  (Status Akreditasi) as UC6
+  (Export Laporan PDF/Excel) as UC7
+  (Dashboard Tematik) as UC8
+
+  Admin --> UC1
+  Admin --> UC2
+  Admin --> UC3
+  Admin --> UC6
+  Admin --> UC7
+  Admin --> UC8
+
+  Pimpinan --> UC1
+  Pimpinan --> UC4
+  Pimpinan --> UC5
+  Pimpinan --> UC8
+
+  Akreditasi --> UC1
+  Akreditasi --> UC6
+  Akreditasi --> UC7
+}
+@enduml
+
+
+
+flowchart
+@startuml
+start
+
+:Login Pengguna;
+if (Hak Akses Admin?) then (Ya)
+  :Kelola Data Fakultas;
+  :Upload / Update Data;
+endif
+
+:Dashboard Tematik;
+repeat
+  :Pilih Analisis (Mahasiswa/Dosen/IPK/etc);
+  :Tampilkan Grafik & Statistik;
+  if (Export Laporan?) then (Ya)
+    :Export ke PDF / Excel;
+  endif
+repeat while (Ada Analisis Lain?)
+
+:Logout;
+
+stop
+@enduml
+
+
+use case diagram nya
+
+@startuml
+actor User
+actor Penjual
+actor "Payment Gateway" as Gateway
+actor "Shipping Provider" as Ekspedisi
+
+rectangle "Marketplace System" {
+  User --> (Browse Produk)
+  User --> (Tambah ke Keranjang)
+  User --> (Checkout)
+  User --> (Lakukan Pembayaran)
+  User --> (Konfirmasi Penerimaan)
+
+  (Checkout) --> (Validasi Stok dan Harga)
+  (Lakukan Pembayaran) --> Gateway
+  Gateway --> (Verifikasi Pembayaran)
+  (Verifikasi Pembayaran) --> (Update Status Pesanan)
+
+  Penjual --> (Proses Pengemasan)
+  Penjual --> (Input Nomor Resi)
+  (Input Nomor Resi) --> Ekspedisi
+  Ekspedisi --> (Update Status Pengiriman)
+
+  (Update Status Pesanan) --> User
+  (Update Status Pesanan) --> Penjual
+}
+@enduml
